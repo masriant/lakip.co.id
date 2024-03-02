@@ -11,6 +11,8 @@ class Admin extends BaseController
         $this->builder  = $this->db->table('users');
     
     }
+    
+    // -------------------------------------------------------------------------------------------------------------------
 
     public function index(): string
     {
@@ -30,6 +32,8 @@ class Admin extends BaseController
 
         return view('admin/index', $data);
     }
+
+    // -------------------------------------------------------------------------------------------------------------------
     
     public function detail($id = 0): string
     {
@@ -50,14 +54,64 @@ class Admin extends BaseController
         return view('admin/detail', $data);
     }
 
-    // public function index(): string
-    // {
+// -------------------------------------------------------------------------------------------------------------------
+
+public function activation(): string
+{
+    $data['title'] = 'Aktifkan User';
+    
+    $this->builder->select('users.id as userid, username, email, fullname, user_image, name, activate_hash, active');
+    $this->builder->join('auth_groups_users', 'auth_groups_users.user_id=users.id');
+    $this->builder->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id');
+    // $this->builder->where('users.id', $id);
+    $query = $this->builder->get();
+
+    $data['users'] = $query->getResult();
+
+    // if (empty($data['user'])) {
+    //     return redirect()->to('/admin');
+    // }
+        
+
+    return view('admin/activation', $data);
+}
+
+
+
+// -------------------------------------------------------------------------------------------------------------------
+
+public function activate($id = 0): string
+{
+    $data['title'] = 'Aktifkan User';
+    
+    $this->builder->select('users.id as userid, username, email, fullname, user_image, name, activate_hash, active');
+    $this->builder->join('auth_groups_users', 'auth_groups_users.user_id=users.id');
+    $this->builder->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id');
+    $this->builder->where('users.id', $id);
+    $query = $this->builder->get();
+
+    $data['users'] = $query->getResult();
+
+    // if (empty($data['user'])) {
+    //     return redirect()->to('/admin');
+    // }
+        
+
+    return view('admin/activation', $data);
+}
+
+
+
+// -------------------------------------------------------------------------------------------------------------------
+
+// public function index(): string
+// {
     //     return view('auth/login');
     // }
 
     // public function register(): string
     // {
-    //     return view('auth/register');
-    // }
+        //     return view('auth/register');
+        // }
 
 }

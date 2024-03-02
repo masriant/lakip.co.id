@@ -6,7 +6,14 @@ class User extends BaseController
 {
     public function index(): string
     {
-        $data[ 'title' ] = "Member Area";
+        // $data[ 'title' ] = "Member Area";
+        // return view('user/index', $data);
+
+        $data['title'] = 'My Profile';
+        
+
+            
+
         return view('user/index', $data);
     }
 

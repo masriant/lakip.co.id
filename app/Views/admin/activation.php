@@ -17,6 +17,7 @@
                         <th scope="col">Activate</th>
                         <th scope="col">Details</th>
                         <th scope="col">Password</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -37,12 +38,13 @@
                                 <a href="<?= url_to('activate-account') . '?token=' . $user->activate_hash ?>" class="badge badge-<?= ($user->activate_hash == null) ? 'success' : 'danger' ?>"><?= ($user->activate_hash == null) ? ' PRO' : 'Activate' ?></a>
                             </td>
                             <td>
-                                <a href="<?= base_url('/admin/' . $user->userid); ?>" class="badge badge-info">Details</a>
+                                <a href="<?= base_url('/admin/' . $user->userid); ?>" class="badge badge-primary">Details</a>
                             </td>
                             <td>
                                 <a href="<?= url_to('reset-password') . '?token=' . $user->activate_hash ?>" class="badge badge-<?= ($user->activate_hash == null) ? 'success' : 'warning' ?>" target="_blank"><?= ($user->active == 1) ? ' Change Password' : 'Activate Password' ?></a>
                             </td>
                             <!-- <+?php endif; ?> -->
+                            
                         </tr>
                     <?php endforeach; ?>
 

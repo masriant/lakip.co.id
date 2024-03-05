@@ -41,7 +41,7 @@
             </div>
         </li>
 
-        <!-- Nav Item - Utilities Collapse Menu -->
+        <!-- Nav Item - Utilities Collapse Menu 1 -->
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
                 <i class="fas fa-fw fa-wrench"></i>
@@ -50,10 +50,10 @@
             <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Custom Utilities:</h6>
-                    <a class="collapse-item" href="<?= base_url('admin'); ?>">Colors</a>
-                    <a class="collapse-item" href="<?= base_url('admin'); ?>">Borders</a>
-                    <a class="collapse-item" href="<?= base_url('admin'); ?>">Animations</a>
-                    <a class="collapse-item" href="<?= base_url('admin'); ?>">Other</a>
+                    <a class="collapse-item" href="<?= base_url('admin'); ?>">Post Content</a>
+                    <a class="collapse-item" href="<?= base_url('admin'); ?>">Input Data</a>
+                    <a class="collapse-item" href="<?= base_url('admin'); ?>">Konfirmasi</a>
+                    <a class="collapse-item" href="<?= base_url('admin'); ?>">Dokumentasi</a>
                 </div>
             </div>
         </li>
@@ -80,14 +80,38 @@
 
     <!-- Nav Item - Edit Profile -->
     <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('user'); ?>/edit/<?= user()->username; ?>">
+        <a class="nav-link" href="<?= base_url(); ?>edit/<?= user()->id; ?>">
             <i class="fas fa-user-edit"></i>
             <span>Edit Profile</span></a>
     </li>
 
+    <?php if (in_groups('user')) : ?>
+    <!-- Divider -->
+    <hr class="sidebar-divider">
 
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Project
+    </div>
 
+<!-- Nav Item - Utilities Collapse Menu 2 -->
+<li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser" aria-expanded="true" aria-controls="collapseUser">
+                <i class="fas fa-fw fa-wrench"></i>
+                <span>Project</span>
+            </a>
+            <div id="collapseUser" class="collapse" aria-labelledby="headingUser" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Project User:</h6>
+                    <a class="collapse-item" href="<?= base_url('admin'); ?>">Post Content</a>
+                    <a class="collapse-item" href="<?= base_url('admin'); ?>">Input Data</a>
+                    <a class="collapse-item" href="<?= base_url('admin'); ?>">Konfirmasi</a>
+                    <a class="collapse-item" href="<?= base_url('admin'); ?>">Dokumentasi</a>
+                </div>
+            </div>
+        </li>
 
+        <?php endif; ?>
     <!-- Divider -->
     <hr class="sidebar-divider">
 

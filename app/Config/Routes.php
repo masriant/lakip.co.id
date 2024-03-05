@@ -10,11 +10,12 @@ use CodeIgniter\Router\RouteCollection;
 // $routes->get('home/user', 'Home::user');
 $routes->get('/', 'User::index');
 $routes->get('/user', 'User::index');
+$routes->get('/edit/(:num)', 'User::edit/$1'); 
 
 $routes->get('/admin', 'Admin::index',  ['filter' => 'role:admin']); 
 $routes->get('/admin/index', 'Admin::index',  ['filter' => 'role:admin']); 
 $routes->get('/admin/(:num)', 'Admin::detail/$1',  ['filter' => 'role:admin']); 
-$routes->get('/admin/edit/(:num)', 'Admin::edit/$1',  ['filter' => 'role:admin']); 
+$routes->get('/admin/edit/(:any)', 'Admin::edit/$1',  ['filter' => 'role:admin']); 
 
 $routes->get('/admin/activation', 'Admin::activation',  ['filter' => 'role:admin']); 
-$routes->get('/admin/activate/(:num)', 'Admin::activate/$1',  ['filter' => 'role:admin']); 
+$routes->get('/admin/activate/(:num)', 'Admin::activate/$1',  ['filter' => 'role:admin']);

@@ -16,7 +16,7 @@ class Admin extends BaseController
 
     public function index(): string
     {
-        $data['title'] = 'User List';
+        $data['title'] = 'Admin User List';
         // $users = new \Myth\Auth\Models\UserModel();
         // $data['users'] = $users->findAll();
 
@@ -107,7 +107,7 @@ public function activate($id = 0): string
 
 public function edit($id = 0): string
 {
-    $data['title'] = 'Edit User';
+    $data['title'] = 'Admin Edit User';
     
     $this->builder->select('users.id as userid, username, email, fullname, user_image, name, activate_hash, active');
     $this->builder->join('auth_groups_users', 'auth_groups_users.user_id=users.id');
@@ -122,7 +122,7 @@ public function edit($id = 0): string
     // }
         
 
-    return view('admin/edit', $data);
+    return view('admin/edit' , $data);
 }
 
 

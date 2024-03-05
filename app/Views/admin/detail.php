@@ -15,25 +15,27 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title"><?= $user->username; ?> <span class="badge badge-<?= ($user->active == 0) ? 'danger' : 'success' ?>"><?= ($user->active == 0) ? 'Not Active' : 'Active' ?></span>
-                        </h5>
+                            <h5 class="card-title"><?= $user->username; ?> 
+                            </h5>
                             <ul class="list-group list-group-flush">
-                                
+
                                 <?php if ($user->fullname) : ?>
                                     <li class="list-group-item"><?= $user->fullname; ?></li>
                                 <?php endif; ?>
                                 <li class="list-group-item"><?= $user->email; ?></li>
 
                                 <li class="list-group-item">
-                                    <span class="badge badge-<?= ($user->name == 'admin') ? 'success' : 'warning' ?>"><?= $user->name; ?></span>
+                                    <span class="badge badge-<?= ($user->name == 'admin') ? 'success' : 'warning' ?>"><?= $user->name; ?></span> <span class="badge badge-<?= ($user->active == 0) ? 'danger' : 'success' ?>"><?= ($user->active == 0) ? 'Not Active' : 'Active' ?></span>
                                 </li>
                                 <li class="list-group-item">
-                                    
-                                    <a href="<?= url_to('activate-account') . '?token=' . $user->activate_hash ?>" class="badge badge-<?= ($user->activate_hash == null) ? 'success' : 'danger' ?>"><?= ($user->activate_hash == null) ? ' PRO' : 'Activate' ?> User </a>
+
+                                    <a href="<?= url_to('activate-account') . '?token=' . $user->activate_hash ?>" class="badge badge-<?= ($user->activate_hash == null) ? 'success' : 'danger' ?>"><?= ($user->activate_hash == null) ? ' PRO' : 'Activate' ?> User </a> 
                                 </li>
+                                <li class="list-group-item"><span class="badge badge-<?= (user()->active == 0) ? 'danger' : 'success' ?>"><?= (user()->created_at); ?> </span></li>
+
                             </ul>
                             <p class="card-text">
-                                <small class="text-body-secondary">Last updated 3 mins ago
+                                <small class="text-body-secondary">Last updated : <?= (user()->updated_at); ?>
                                     <a href="<?= base_url('admin'); ?>/activation">&laquo; Back to user list</a>
                                 </small>
                             </p>
@@ -46,47 +48,21 @@
 
     <div class="row">
         <!-- <div class="col-lg-8"> -->
-<!-- content -->
-<div class="row row-cols-1 row-cols-md-2 g-4">
-  <div class="col">
-    <div class="card">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
-  </div>
-</div>
-<br>
-<!-- content end -->
+        <!-- content -->
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            <div class="col">
+                <div class="card">
+                    <img src="<?= base_url('/img/' . $user->user_image); ?>" class="img-fluid rounded-start" width="100px" alt="<?= $user->fullname; ?>">
+                    <div class="card-body">
+                        <h5 class="card-title"><?= $user->username; ?></h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <br>
+        <!-- content end -->
         <!-- </div> -->
     </div>
 

@@ -4,6 +4,15 @@ namespace App\Controllers;
 
 class User extends BaseController
 {
+    protected $db, $builder;
+    public function __construct()
+    {
+        $this->db       = \Config\Database::connect();
+        $this->builder  = $this->db->table('users');
+    
+    }
+    // -------------------------------------------------
+
     public function index(): string
     {
         // $data[ 'title' ] = "Member Area";
@@ -16,26 +25,24 @@ class User extends BaseController
 
     public function edit($id = 0): string
     {
-        $data['title'] = 'Edit User';
+        $data['title'] = ' User Edit';
 
-        $db       = \Config\Database::connect();
-        $builder  = $db->table('users');
+        $this->builder->select('users.id as userid, username, email, fullname, user_image, name, activate_hash, active,updated_at');
+    $this->builder->join('auth_groups_users', 'auth_groups_users.user_id=users.id');
+    $this->builder->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id');
+    $this->builder->where('users.id', $id);
+    $query = $this->builder->get();
 
-        $builder->select('users.id as userid, username, email, fullname, user_image, name, activate_hash, active');
-        $builder->join('auth_groups_users', 'auth_groups_users.user_id=users.id');
-        $builder->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id');
+    $data['users'] = $query->getRow();
 
-        $builder->where('users.id', $id);
-        $query = $builder->get();
-
-        $data['users'] = $query->getRow();
-
-        // if (empty($data['user'])) {
-        //     return redirect()->to('/admin');
-        // }
+    // if (empty($data['user'])) {
+    //     return redirect()->to('/admin');
+    // }
+        
 
 
-        return view('user/edit/', $data);
+
+        return view('user/edit', $data);
     }
 
     // public function index(): string

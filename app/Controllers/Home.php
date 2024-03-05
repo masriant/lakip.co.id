@@ -10,7 +10,7 @@ class Home extends BaseController
         return view('auth/login', $data);
     }
 
-    public function register(): string
+    public function register()
     {
         $data[ 'title' ] = "Register Form";
         return view('auth/register', $data);

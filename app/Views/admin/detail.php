@@ -28,14 +28,13 @@
                                     <span class="badge badge-<?= ($user->name == 'admin') ? 'success' : 'warning' ?>"><?= $user->name; ?></span>
                                 </li>
                                 <li class="list-group-item">
-                                    <small>
-                                        <a href="<?= base_url('admin'); ?>">&laquo; Back to user list</a>
-                                    </small>
+                                    
+                                    <a href="<?= url_to('activate-account') . '?token=' . $user->activate_hash ?>" class="badge badge-<?= ($user->activate_hash == null) ? 'success' : 'danger' ?>"><?= ($user->activate_hash == null) ? ' PRO' : 'Activate' ?> User </a>
                                 </li>
                             </ul>
                             <p class="card-text">
                                 <small class="text-body-secondary">Last updated 3 mins ago
-                                    <a href="<?= base_url('admin'); ?>">&laquo; Back to user list</a>
+                                    <a href="<?= base_url('admin'); ?>/activation">&laquo; Back to user list</a>
                                 </small>
                             </p>
                         </div>

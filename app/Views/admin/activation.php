@@ -15,7 +15,8 @@
                         <th scope="col">Role</th>
                         <th scope="col">Status</th>
                         <th scope="col">Activate</th>
-                        <th scope="col">Reset</th>
+                        <th scope="col">Details</th>
+                        <th scope="col">Password</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -25,15 +26,23 @@
                             <th scope="row"><?= $i++ ?></th>
                             <td><?= $user->username; ?></td>
                             <td><?= $user->email; ?></td>
-                            <td><?= $user->name; ?></td>
+                            <td><span class="badge badge-<?= ($user->name == "admin") ? 'danger' : 'info' ?>">
+                                    <?= $user->name; ?></span>
+                            </td>
+
                             <td><span class="badge badge-<?= ($user->active == 0) ? 'danger' : 'success' ?>"><?= ($user->active == 0) ? 'Not Active' : 'Active' ?></span> </td>
 
+                            <!-- <+?php if ($user->active == 0) : ?> -->
                             <td>
-                                <a href="<?= url_to('activate-account') . '?token=' . $user->activate_hash ?>" class="badge badge-<?= ($user->activate_hash == null) ? 'success' : 'danger' ?>"><?= ($user->active == 1) ? 'Success' : 'Activate' ?></a>
+                                <a href="<?= url_to('activate-account') . '?token=' . $user->activate_hash ?>" class="badge badge-<?= ($user->activate_hash == null) ? 'success' : 'danger' ?>"><?= ($user->activate_hash == null) ? ' PRO' : 'Activate' ?></a>
                             </td>
                             <td>
-                                <a href="<?= url_to('reset-password') . '?token=' . $user->activate_hash ?>" class="badge badge-<?= ($user->activate_hash == null) ? 'success' : 'info' ?>" target="_blank"><?= ($user->active == 1) ? 'Success' : 'Reset Password' ?></a>
+                                <a href="<?= base_url('/admin/' . $user->userid); ?>" class="badge badge-info">Details</a>
                             </td>
+                            <td>
+                                <a href="<?= url_to('reset-password') . '?token=' . $user->activate_hash ?>" class="badge badge-<?= ($user->activate_hash == null) ? 'success' : 'warning' ?>" target="_blank"><?= ($user->active == 1) ? ' Change Password' : 'Activate Password' ?></a>
+                            </td>
+                            <!-- <+?php endif; ?> -->
                         </tr>
                     <?php endforeach; ?>
 

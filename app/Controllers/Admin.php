@@ -39,7 +39,7 @@ class Admin extends BaseController
     {
         $data['title'] = 'User Details';
         
-        $this->builder->select('users.id as userid, username, email, fullname, user_image, name, active');
+        $this->builder->select('users.id as userid, username, email, fullname, user_image, name, activate_hash, active');
         $this->builder->join('auth_groups_users', 'auth_groups_users.user_id=users.id');
         $this->builder->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id');
         $this->builder->where('users.id', $id);
@@ -90,7 +90,7 @@ public function activate($id = 0): string
     $this->builder->where('users.id', $id);
     $query = $this->builder->get();
 
-    $data['users'] = $query->getResult();
+    $data['users'] = $query->getRow();
 
     // if (empty($data['user'])) {
     //     return redirect()->to('/admin');
@@ -98,6 +98,31 @@ public function activate($id = 0): string
         
 
     return view('admin/activation', $data);
+}
+
+
+
+// -------------------------------------------------------------------------------------------------------------------
+
+
+public function edit($id = 0): string
+{
+    $data['title'] = 'Edit User';
+    
+    $this->builder->select('users.id as userid, username, email, fullname, user_image, name, activate_hash, active');
+    $this->builder->join('auth_groups_users', 'auth_groups_users.user_id=users.id');
+    $this->builder->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id');
+    $this->builder->where('users.id', $id);
+    $query = $this->builder->get();
+
+    $data['users'] = $query->getRow();
+
+    // if (empty($data['user'])) {
+    //     return redirect()->to('/admin');
+    // }
+        
+
+    return view('admin/edit', $data);
 }
 
 

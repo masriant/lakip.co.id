@@ -17,7 +17,7 @@
                         <div class="card-body">
                             <h5 class="card-title"><?= user()->username; ?></h5>
                             <ul class="list-group list-group-flush">
-                                
+
 
                                 <?php if (user()->fullname) : ?>
                                     <li class="list-group-item">Fullname : <?= user()->fullname; ?></li>
@@ -26,8 +26,10 @@
                                 <li class="list-group-item">Email : <?= user()->email; ?></li>
 
 
+                               
 
                             </ul>
+
                             <p class="card-text">
                                 <small class="text-body-secondary">Last updated 3 mins ago</small>
                             </p>
@@ -35,6 +37,7 @@
                     </div>
                 </div>
             </div>
+            <a href="<?= base_url('/user/edit/'); ?>" class="btn btn-warning">Edit</a>
         </div>
     </div>
 

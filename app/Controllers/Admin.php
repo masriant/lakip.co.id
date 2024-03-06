@@ -22,7 +22,7 @@ class Admin extends BaseController
 
         // $db       = \Config\Database::connect();
         // $builder  = $db->table('users');
-        $this->builder->select('users.id as userid, username, email, fullname, user_image, name, active');
+        $this->builder->select('users.id as userid, username, email, fullname, user_image, name, activate_hash, active');
         $this->builder->join('auth_groups_users', 'auth_groups_users.user_id=users.id');
         $this->builder->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id');
         $query = $this->builder->get();

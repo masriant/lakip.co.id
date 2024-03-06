@@ -47,6 +47,6 @@
       </table>
     </div>
   </div>
-
+</div>
   <?= $this->endSection(); ?>
   

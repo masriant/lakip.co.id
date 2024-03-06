@@ -10,13 +10,25 @@
         </div>
     </a>
 
-    <?php if (in_groups('admin')) : ?>
+    <?php if (in_groups('user')) : ?>
         <!-- Divider -->
         <hr class="sidebar-divider">
 
         <!-- Heading -->
         <div class="sidebar-heading">
+            Project
+
+        </div> <!-- Divider -->
+    <?php endif; ?>
+
+    <?php if (in_groups('admin')) : ?>
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+
             User Management
+
         </div>
 
         <!-- Nav Item - User List -->
@@ -35,33 +47,32 @@
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Custom Components:</h6>
-                    <a class="collapse-item" href="<?= base_url('admin'); ?>/activation">Aktivasi User</a>
+                    <a class="collapse-item" href="<?= base_url('admin'); ?>/activation">Activate User</a>
                     <a class="collapse-item" href="<?= base_url('admin'); ?>">Delete</a>
                 </div>
             </div>
         </li>
 
-        <!-- Nav Item - Utilities Collapse Menu 1 -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-                <i class="fas fa-fw fa-wrench"></i>
-                <span>Utilities</span>
-            </a>
-            <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Custom Utilities:</h6>
-                    <a class="collapse-item" href="<?= base_url('admin'); ?>">Post Content</a>
-                    <a class="collapse-item" href="<?= base_url('admin'); ?>">Input Data</a>
-                    <a class="collapse-item" href="<?= base_url('admin'); ?>">Konfirmasi</a>
-                    <a class="collapse-item" href="<?= base_url('admin'); ?>">Dokumentasi</a>
-                </div>
-            </div>
-        </li>
-
-
-
-
     <?php endif; ?>
+    <!-- Nav Item - Utilities Collapse Menu 1 -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser" aria-expanded="true" aria-controls="collapseUser">
+            <i class="fas fa-fw fa-wrench"></i>
+            <span>Project</span>
+        </a>
+        <div id="collapseUser" class="collapse" aria-labelledby="headingUser" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Project User :</h6>
+                <a class="collapse-item" href="<?= base_url('admin'); ?>">Post Content</a>
+                <a class="collapse-item" href="<?= base_url('admin'); ?>">Input Data</a>
+                <a class="collapse-item" href="<?= base_url('admin'); ?>">Konfirmasi</a>
+                <a class="collapse-item" href="<?= base_url('admin'); ?>">Dokumentasi</a>
+            </div>
+        </div>
+    </li>
+
+
+
 
     <!-- Divider -->
     <hr class="sidebar-divider">
@@ -85,33 +96,7 @@
             <span>Edit Profile</span></a>
     </li>
 
-    <?php if (in_groups('user')) : ?>
-    <!-- Divider -->
-    <hr class="sidebar-divider">
 
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        Project
-    </div>
-
-<!-- Nav Item - Utilities Collapse Menu 2 -->
-<li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser" aria-expanded="true" aria-controls="collapseUser">
-                <i class="fas fa-fw fa-wrench"></i>
-                <span>Project</span>
-            </a>
-            <div id="collapseUser" class="collapse" aria-labelledby="headingUser" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Project User:</h6>
-                    <a class="collapse-item" href="<?= base_url('admin'); ?>">Post Content</a>
-                    <a class="collapse-item" href="<?= base_url('admin'); ?>">Input Data</a>
-                    <a class="collapse-item" href="<?= base_url('admin'); ?>">Konfirmasi</a>
-                    <a class="collapse-item" href="<?= base_url('admin'); ?>">Dokumentasi</a>
-                </div>
-            </div>
-        </li>
-
-        <?php endif; ?>
     <!-- Divider -->
     <hr class="sidebar-divider">
 
